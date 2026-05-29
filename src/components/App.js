@@ -83,29 +83,27 @@ const App = () => {
           // Exact required message in red when empty
           <p style={{ color: 'red' }}>There are no items in the cart</p>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {cart.map(item => (
-              <div 
-                key={item.cartId} 
-                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+          cart.map(item => (
+            <div 
+              key={item.cartId} 
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}
+            >
+              <span>{item.name}</span>
+              <button 
+                onClick={() => handleRemoveFromCart(item.cartId)}
+                style={{ 
+                  backgroundColor: '#5cb85c', 
+                  color: 'white', 
+                  padding: '8px 20px', 
+                  border: 'none', 
+                  cursor: 'pointer',
+                  borderRadius: '3px'
+                }}
               >
-                <span>{item.name}</span>
-                <button 
-                  onClick={() => handleRemoveFromCart(item.cartId)}
-                  style={{ 
-                    backgroundColor: '#5cb85c', 
-                    color: 'white', 
-                    padding: '8px 20px', 
-                    border: 'none', 
-                    cursor: 'pointer',
-                    borderRadius: '3px'
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-          </div>
+                Remove
+              </button>
+            </div>
+          ))
         )}
       </div>
       
